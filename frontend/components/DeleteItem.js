@@ -36,7 +36,7 @@ const DeleteItem = (props) => {
                 <button
                     onClick={() => {
                         if (confirm('Are you sure you want to delete?')) {
-                            deleteItem();
+                            deleteItem().catch(error => alert(error.message));
                         }
                     }}
                 >
