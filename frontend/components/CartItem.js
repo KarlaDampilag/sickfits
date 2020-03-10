@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import formatMoney from '../lib/formatMoney';
+import RemoveFromCart from './RemoveFromCart';
 
 const CartItemStyle = styled.li`
     padding: 1rem 0;
@@ -28,6 +29,7 @@ const CartItem = (props) => (
                 {formatMoney(props.cartItem.item.price * props.cartItem.quantity)}
             </p>
         </div>
+        <RemoveFromCart id={props.cartItem.id} />
     </CartItemStyle>
 );
 
