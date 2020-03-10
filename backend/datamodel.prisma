@@ -7,7 +7,7 @@ enum Permission {
   PERMISSIONUPDATE
 }
 
-type User implements Node {
+type User {
   id: ID! @id
   name: String!
   email: String! @unique
@@ -15,6 +15,7 @@ type User implements Node {
   resetToken: String
   resetTokenExpiry: String
   permissions: [Permission!]! @scalarList(strategy: RELATION)
+  cart: [CartItem!]!
 }
 
 type Item {
@@ -26,5 +27,12 @@ type Item {
   largeImage: String
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  user: User! @relation(name: "OwnerOfItem")
+  user: User!
+}
+
+type CartItem {
+  id: ID! @id
+  quantity: Int! @default(value: 1)
+  item: Item!
+  user: User!
 }
